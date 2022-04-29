@@ -1,0 +1,50 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>行情指标前端计算</title>
+</head>
+<body>
+	<input type="number" id="ART" placeholder="输入14日ATR" /><br/><br/>
+	<input type="number" id="EMA" placeholder="输入EMA_14" /><br/><br/>
+	<button onclick="getATR123()">计算ATR通道</button>
+	<div id="art_container">
+
+	</div>
+	
+	<script type="text/javascript">
+	function del(){
+		document.getElementById( 'art_container' ).innerHTML =  '' 
+	}
+
+	function createART(beishu, emaValue, artValue){
+		var beishuArtValue = emaValue + beishu * artValue
+		var textlabel = document.createElement("p");
+		var str = beishu + "倍ATR ：" + beishuArtValue
+		textlabel.innerHTML= str
+		return textlabel
+	}
+
+
+	function getATR123(){
+		del()
+		var art = parseFloat(document.getElementById("ART").value);
+		var ema = parseFloat(document.getElementById("EMA").value);
+		var artContainer = document.getElementById("art_container");
+		art_container.appendChild(createART(3, ema, art))
+
+		art_container.appendChild(createART(2, ema, art))
+
+		art_container.appendChild(createART(1, ema, art))
+
+		art_container.appendChild(createART(-1, ema, art))
+
+		art_container.appendChild(createART(-2, ema, art))
+
+		art_container.appendChild(createART(-3, ema, art))
+
+
+	}
+	</script>
+	</body>
+</html>
+
