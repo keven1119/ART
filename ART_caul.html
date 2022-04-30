@@ -26,13 +26,20 @@
 		textlabel.style = "white-space: pre-line;"
 		if (beishu < 0) {
 			var chazhi = lowValue - beishuArtValue
-			var str = beishu + "倍ATR:" + beishuArtValue + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "离当日最低价:" + chazhi + "\n\n"
+			var str = beishu + "倍ATR:" + beishuArtValue + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "最低价离ART距离:" + chazhi + "\n\n"
 			textlabel.innerHTML= str
 		}else{
 			var chazhi = heighValue - beishuArtValue
-			var str = beishu + "倍ATR:" + beishuArtValue + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "离当日最高价:" + chazhi + "\n\n"
+			var str = beishu + "倍ATR:" + beishuArtValue + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "最高价距离:" + chazhi + "\n\n"
 			textlabel.innerHTML= str
 		}
+		return textlabel
+	}
+	function tips(){
+		var textlabel = document.createElement("b");
+		textlabel.style = "white-space: pre-line;"
+		var str = "距离为正，证明超过该倍数ART通道\n\n"
+		textlabel.innerHTML= str
 		return textlabel
 	}
 
@@ -45,6 +52,9 @@
 		var high = parseFloat(document.getElementById("HIGH").value);
 
 		var artContainer = document.getElementById("art_container");
+
+		art_container.appendChild(tips())
+
 		art_container.appendChild(createART(3, ema, art, high, low))
 
 		art_container.appendChild(createART(2, ema, art, high, low))
