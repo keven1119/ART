@@ -21,15 +21,15 @@
 	}
 
 	function createART(beishu, emaValue, artValue, heighValue, lowValue){
-		var beishuArtValue = emaValue + beishu * artValue
+		var beishuArtValue = (emaValue + beishu * artValue).toFixed(3)
 		var textlabel = document.createElement("b");
 		textlabel.style = "white-space: pre-line;"
 		if (beishu < 0) {
-			var chazhi = lowValue - beishuArtValue
-			var str = beishu + "倍ATR:" + beishuArtValue + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "最低价离ART距离:" + chazhi + "\n\n"
+			var chazhi = (lowValue - beishuArtValue).toFixed(3)
+			var str = beishu + "倍ATR:" + beishuArtValue + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "最低价距离:" + chazhi + "\n\n"
 			textlabel.innerHTML= str
 		}else{
-			var chazhi = heighValue - beishuArtValue
+			var chazhi = (heighValue - beishuArtValue).toFixed(3)
 			var str = beishu + "倍ATR:" + beishuArtValue + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "最高价距离:" + chazhi + "\n\n"
 			textlabel.innerHTML= str
 		}
